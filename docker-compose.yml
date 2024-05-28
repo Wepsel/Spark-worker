@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  spark-worker-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spark-worker-1
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://145.220.74.141:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+      - PYSPARK_PYTHON=python3.10
+    ports:
+      - "8081:8081"
